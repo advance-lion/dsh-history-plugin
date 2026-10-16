@@ -1,0 +1,16 @@
+# Dependencies (this package has none)
+node_modules/
+
+# Release artifacts (built by `npm pack`)
+*.tgz
+
+# Local probe artifacts: extracted DSH bundles, screenshots and RPC dumps
+_probe/
+
+# Stray file left by a PowerShell redirect that used `$null` as a path
+/$null
+
+# Logs and OS noise
+*.log
+.DS_Store
+Thumbs.db

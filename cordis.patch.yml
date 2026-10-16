@@ -1,0 +1,12 @@
+# dsh-history-plugin bundle patch
+#
+# 这一层把插件行插进任何选中 `dsh-history-plugin` 的 profile：
+# 安装时 `dsh plugin --profile <name> add <spec>` 会做两件事——
+#   1. 把 `dsh-history-plugin` 追加进 profile package.json 的 `dsh.profile.bundles`；
+#   2. profile 启动时合并本补丁（一次 insert），于是插件行出现在 Loader 树里。
+#
+# 宿主半边（lib/index.js）负责记账与同步；浏览器半边由 package.json 的
+# `dsh.client` 声明（client/client.js）——两个入口都指向同一份历史表。
+- insert:
+    - id: history-plugin
+      name: dsh-history-plugin

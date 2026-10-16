@@ -1,0 +1,69 @@
+{
+  "name": "dsh-history-plugin",
+  "version": "0.1.0",
+  "description": "插件安装历史：本机记账、按设备归类、经百度网盘跨设备同步、勾选批量重装",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./client/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client",
+    "docs",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:baidu": "node scripts/baidu-smoke.mjs",
+    "smoke:sync": "node scripts/sync-smoke.mjs",
+    "smoke:host": "node scripts/host-smoke.mjs",
+    "smoke:client": "node scripts/client-smoke.mjs",
+    "smoke:oauth": "node scripts/oauth-smoke.mjs",
+    "smoke:authflow": "node scripts/authflow-smoke.mjs",
+    "smoke:all": "node scripts/smoke.mjs && node scripts/baidu-smoke.mjs && node scripts/sync-smoke.mjs && node scripts/host-smoke.mjs && node scripts/client-smoke.mjs && node scripts/oauth-smoke.mjs && node scripts/authflow-smoke.mjs",
+    "live:baidu": "node scripts/baidu-live.mjs",
+    "live:two-device": "node scripts/two-device-live.mjs",
+    "lint:text": "node scripts/lint-text.mjs",
+    "report": "node scripts/ledger-report.mjs"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-theme"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0 <5"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "history",
+    "baidu-netdisk"
+  ],
+  "license": "MIT"
+}
